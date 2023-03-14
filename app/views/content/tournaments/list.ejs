@@ -1,0 +1,46 @@
+<div class="container">
+    <h1><%=title %></h1>
+    <a href="/tournament-add" class="btn btn-primary" role="button">
+        <i class="fas fa-plus-circle"></i> Add a Tournament
+    </a>
+    <div class="row">
+        <div class="column">
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col" class="text-center">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Game</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">End Date</th>
+                        <th scope="col">Location</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tournamentList">
+                    <% for(let count=0; count < tournaments.length; count++) { %>                   
+                        <tr>
+                            <td scope="row" class="text-center"></td>
+                            <td><%= tournaments[count].name %></td>
+                            <td><%= tournaments[count].game %></td>
+                            <td><%= tournaments[count].start_date %></td>
+                            <td><%= tournaments[count].end_date %></td>
+                            <td><%= tournaments[count].location %></td>
+                            <td class="text-center col-1">
+                                <a class="btn btn-primary" href="/tournament-edit/<%= tournaments[count].id %>">
+                                    Edit
+                                </a>
+                            </td>
+                            <td class="text-center col-1">
+                                <a class="btn btn-warning" href="/tournament-delete/<%= tournaments[count].id %>">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
