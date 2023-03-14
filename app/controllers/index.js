@@ -25,4 +25,5 @@ export function displayTournamentPage(req, res, next){
 export function displayViewTournamentPage(req, res, next){
     res.render('index', {title: 'view-Tournament', page: 'view-tournament'});
 
-}
+}export function displayLoginPage(req, res, next){
+    res.render('index', {title: 'login', page: 'login'});}

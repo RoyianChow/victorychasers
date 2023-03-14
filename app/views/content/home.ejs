@@ -16,24 +16,39 @@
 	</main>
 
 	<script>
+		import { displayTournamentPage, displayViewTournamentPage, displayLoginPage } from '../controllers/index.js';
+		
 		function createTournament() {
-			if (localStorage.getItem('loggedIn') === 'true') {
-				// redirect to create tournament page
-				window.location.href = 'create-tournament.ejs';
-			} else {
-				// redirect to login page
-				window.location.href = 'login';
-			}
+		  if (localStorage.getItem('loggedIn') === 'true') {
+			// redirect to create tournament page
+			displayViewTournamentPage();
+		  } else {
+			// redirect to login page
+			displayLoginPage();
+		  }
 		}
-        function viewLiveTournament() {
-			if (localStorage.getItem('loggedIn') === 'true') {
-				// redirect to view tournament page
-				window.location.href = 'view-tournament.ejs';
-			} else {
-				// redirect to login page
-				window.location.href = 'login';
-			}
+		
+		function viewLiveTournament() {
+		  if (localStorage.getItem('loggedIn') === 'true') {
+			// redirect to view tournament page
+			displayViewTournamentPage();
+		  } else {
+			// redirect to login page
+			displayLoginPage();
+		  }
 		}
-	</script>
+		
+		// check if user is logged in and display appropriate page
+		if (localStorage.getItem('loggedIn') === 'true') {
+		  displayTournamentPage();
+		} else {
+		  displayLoginPage();
+		}
+		
+		</script>
+		
+		<!-- button to view tournaments -->
+		<button onclick="viewLiveTournament()">View Tournaments</button>
+		
 </body>
 </html>

@@ -27,7 +27,7 @@ import { Secret, MongoURI } from '../config/index.js';
 
 // Import Routes
 import indexRouter from '../app/routes/index.js';
-import tournamentRouter from '../app/routes/tournaments';
+import tournamentRouter from '../app/routes/tournaments.js';
 import authRouter from '../app/routes/auth.js';
 
 // Complete DB Configuration
@@ -48,7 +48,7 @@ app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'ejs');
 
 // General Middlewares
-app.use(logger('dev'));
+app.use(logger('dev')); 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
