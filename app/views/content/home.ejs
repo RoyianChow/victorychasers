@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tournament Site</title>
+	<style>
+		body {
+			background-image: url("content/background.jpg");
+			background-size:130%;
+            background-position-y: 100px;
+        }
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Tournament Site</h1>
+		
+	</header>
+	<main>
+		<h2>Welcome to our tournament site!</h2>
+		<p>Here you can create and join tournaments for your favorite games.</p>
+		<button onclick="createTournament()">Create a Tournament</button>
+	</main>
+
+	<script>
+		function createTournament() {
+			if (localStorage.getItem('loggedIn') === 'true') {
+				// redirect to create tournament page
+				window.location.href = 'create-tournament.ejs';
+			} else {
+				// redirect to login page
+				window.location.href = 'login';
+			}
+		}
+        function viewLiveTournament() {
+			if (localStorage.getItem('loggedIn') === 'true') {
+				// redirect to view tournament page
+				window.location.href = 'view-tournament.ejs';
+			} else {
+				// redirect to login page
+				window.location.href = 'login';
+			}
+		}
+	</script>
+</body>
+</html>
