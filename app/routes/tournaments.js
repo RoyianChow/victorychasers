@@ -18,4 +18,4 @@ router.post('/tournament-edit/:id', ProcessTournamentsEditPage);
 // D elete
 router.get('/tournament-delete/:id', ProcessTournamentsDelete);
 
-export default router;
+export default router; //
