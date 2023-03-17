@@ -2,6 +2,7 @@ import passport from 'passport';
 import userModel from '../../models/user.js';
 import { GenerateToken } from '../../utils/index.js';
 
+
 export function processLogin(req, res, next){
     passport.authenticate('local', (err, user, info) => {
         if(err){

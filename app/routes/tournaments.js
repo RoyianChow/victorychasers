@@ -3,7 +3,6 @@ import { DisplayTournamentsAddPage, DisplayTournamentsEditPage, DisplayTournamen
 
 const router = Router();
 
-
 // C reate
 router.get('/tournament-add', DisplayTournamentsAddPage);
 router.post('/tournament-add', ProcessTournamentsAddPage);

@@ -1,3 +1,6 @@
+import jwt from 'jsonwebtoken';
+import { Secret } from '../../config/index.js';
+
 /// Return the user display name from session
 export function UserDisplayName(req){
     if(req.user){
@@ -13,4 +16,19 @@ export function AuthGuard(req, res, next){
     }
 
     next();
+}
+
+export function GenerateToken(user){
+    const payload = {
+        id: user._id,
+        displayName: user.displayName,
+        username: user.username,
+        emailAddress: user.EmailAddress
+    }
+
+    const jwtOptions = {
+        expiresIn: 604800 // 1 week
+    }
+
+    return jwt.sign(payload, Secret, jwtOptions);
 }

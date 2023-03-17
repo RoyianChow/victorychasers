@@ -16,6 +16,7 @@ import flash from 'connect-flash';
 // Auth Step 2 - define our authentication strategy
 let localStrategy = passportLocal.Strategy;
 
+
 // Auth Step 3 - import the user model
 import User from './models/user.js';
 
@@ -29,6 +30,16 @@ import { Secret, MongoURI } from '../config/index.js';
 import indexRouter from '../app/routes/index.js';
 import tournamentRouter from '../app/routes/tournaments.js';
 import authRouter from '../app/routes/auth.js';
+
+import authApiRouter from '../app/routes/api/auth-api.js';
+import tournamentsApiRouter from '../app/routes/api/tournament-api.js';
+
+
+// Auth Step 9 - Enable JWT
+import cors from 'cors';
+import passportJWT from 'passport-jwt';
+let JWTSTrategy = passportJWT.Strategy;
+let ExtractJWT = passportJWT.ExtractJwt;
 
 // Complete DB Configuration
 mongoose.connect(MongoURI);
@@ -75,9 +86,32 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// Auth Step 9 - Enable JWT
+app.use(cors());
+let jwtOption = {
+  jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+  secretOrKey: Secret
+}
+// JWT Passport Strategy
+let strategy = new JWTSTrategy(jwtOption, (jwt_payload, done) => {
+    User.findById(jwt_payload.id)
+        .then(user => {
+            return done(null, user)
+        })
+        .catch(err => {
+            return done(err, false);
+        });
+});
+
+passport.use(strategy);
+
+
 // Use Routes
 app.use('/',indexRouter);
 app.use('/', tournamentRouter);
 app.use('/', authRouter);
+// Enable API Routes
+app.use('/api/auth', authApiRouter);
+app.use('/api/tournaments', passport.authenticate('jwt', {session: false}),  tournamentsApiRouter);
 
 export default app;

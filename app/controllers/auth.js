@@ -20,7 +20,7 @@ export function DisplayLoginPage(req, res, next){
                                     });
     }
 
-    return res.redirect('/movie-list');
+    return res.redirect('/tournament-list');
 }
 
 
