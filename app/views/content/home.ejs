@@ -12,43 +12,9 @@
 	<main>
 		<h2>Welcome to our tournament site!</h2>
 		<p>Here you can create and join tournaments for your favorite games.</p>
-		<button onclick="createTournament()">Create a Tournament</button>
+		
 	</main>
 
-	<script>
-		import { displayTournamentPage, displayViewTournamentPage, displayLoginPage } from '../controllers/index.js';
-		
-		function createTournament() {
-		  if (localStorage.getItem('loggedIn') === 'true') {
-			// redirect to create tournament page
-			displayViewTournamentPage();
-		  } else {
-			// redirect to login page
-			displayLoginPage();
-		  }
-		}
-		
-		function viewLiveTournament() {
-		  if (localStorage.getItem('loggedIn') === 'true') {
-			// redirect to view tournament page
-			displayViewTournamentPage();
-		  } else {
-			// redirect to login page
-			displayLoginPage();
-		  }
-		}
-		
-		// check if user is logged in and display appropriate page
-		if (localStorage.getItem('loggedIn') === 'true') {
-		  displayTournamentPage();
-		} else {
-		  displayLoginPage();
-		}
-		
-		</script>
-		
-		<!-- button to view tournaments -->
-		<button onclick="viewLiveTournament()">View Tournaments</button>
 		
 </body>
 </html>

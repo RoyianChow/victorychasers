@@ -9,13 +9,13 @@ res.end(error);
 }
 console.log(tournamentCollection);
 
-res.render('index', {title: 'Tournament List', page: 'tournaments/list', tournaments: tournamentCollection })
+res.render('index', {title: 'Tournament List', page: 'tournaments/list', tournaments: tournamentCollection ,displayName: UserDisplayName(req)})
 })
 }
 
 //Create
 export function DisplayTournamentsAddPage(req, res, next){
-res.render('index', {title: 'Add Tournament', page: 'tournaments/edit', tournament: {}})
+res.render('index', {title: 'Add Tournament', page: 'tournaments/edit', tournament: {},displayName: UserDisplayName(req)})
 }
 
 export function ProcessTournamentsAddPage(req, res, next){
@@ -45,7 +45,7 @@ export function DisplayTournamentsEditPage(req, res, next){let id = req.params.i
             res.end(error);
         }
     
-        res.render('index', {title: 'Edit Tournament', page: 'tournaments/edit', tournament})
+        res.render('index', {title: 'Edit Tournament', page: 'tournaments/edit', tournament,displayName: UserDisplayName(req)})
     })    
 }
 
