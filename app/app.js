@@ -32,7 +32,7 @@ import tournamentRouter from '../app/routes/tournaments.js';
 import authRouter from '../app/routes/auth.js';
 
 import authApiRouter from '../app/routes/api/auth-api.js';
-import tournamentsApiRouter from '../app/routes/api/tournament-api.js';
+import tournamentsApiRouter from '../app/routes/api/tournaments-api.js';
 
 
 // Auth Step 9 - Enable JWT

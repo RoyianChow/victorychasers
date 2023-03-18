@@ -1,5 +1,5 @@
 import {Router } from 'express';
-import {displayAboutPage, displayContactPage, displayHomePage, displayTournamentPage, displayViewTournamentPage} from '../controllers/index.js';
+import {displayAboutPage, displayContactPage, displayHomePage} from '../controllers/index.js';
 
 const router = Router();
 
@@ -8,8 +8,6 @@ router.get('/home', displayHomePage);
 router.get('/about', displayAboutPage);
 
 router.get('/contact', displayContactPage);
-router.get('/create-tournament', displayTournamentPage);
-router.get('/view-tournament', displayViewTournamentPage);
 
 
 
