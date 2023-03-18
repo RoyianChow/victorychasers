@@ -13,7 +13,15 @@
             <li class="nav-item">
               <a class="nav-link <%= (page == 'tournaments/list') ? 'active' : ''; %>" aria-current="page" href="/tournaments/list"><i class="fa-solid fa-book fa-lg"></i> tournaments List</a>
             </li>
-          
+            <% if( displayName) { %>          
+              <li class="nav-item">              
+                <a href="/logout" class="nav-link"> Logout</a>
+              </li>
+            <% } else { %>
+            <li class="nav-item">
+              <a href="/auth/login" class="nav-link">Login</a>
+            </li>
+            <% } %>
         </ul>
       </div>
     </div>

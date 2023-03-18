@@ -8,12 +8,11 @@
             <form class="form" method="POST">
                 <div class="form-group">
                     <label for="nameTextField">Book Title</label>
-                    <input type="text" class="form-control"
-                    id="nameTextField"
-                    placeholder="Enter the Tournament title"
-                    name="name" 
-                    value="<%= tournament.name %>"
-                    required>
+                    <input type="text" 
+                    name="name" id="name" 
+                    class="form-control" 
+                    value="<%= tournament.name %>" required>
+
                 </div>
                
                 <div class="form-group">
@@ -96,7 +95,9 @@
                 
                     <a href="/tournaments/list" class="btn btn-warning">
                         <i class="fas fa-undo"></i> Cancel</a>
-
+                <!-- Add the delete button below the cancel button -->
+<a href="/tournaments/delete/<%= tournament._id %>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this tournament?');">
+    <i class="fas fa-trash-alt"></i> Delete</a>        
             </form>
         </div>
 

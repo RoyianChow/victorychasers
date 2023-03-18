@@ -5,6 +5,7 @@
 // define the tournament model
 import tournamentsModel from '../models/tournaments.js';
 
+import { UserDisplayName } from "../utils/index.js";
 
 
 /* GET tournaments List page. READ */
@@ -15,13 +16,13 @@ export function displayTournamentList(req, res, next) {
             console.error(err);
             res.end(err);
         }
-        res.render('index', { title: 'Tournament List', page: 'tournaments/list', tournaments: tournamentsCollection });
+        res.render('index', { title: 'Tournament List', page: 'tournaments/list', tournaments: tournamentsCollection,displayName: UserDisplayName(req) });
     });
 }
 //  GET the tournament Details page in order to add a new tournament
 export function displayAddPage(req, res, next) {
     // render the add page with a default empty tournament object
-    res.render('index', { title: 'Tournament Add', page: 'tournaments/add', tournament: {} });
+    res.render('index', { title: 'Tournament Add', page: 'tournaments/add', tournament: {},displayName: UserDisplayName(req) });
 
 }
 
@@ -66,9 +67,7 @@ export function displayEditPage(req, res, next) {
         }
         else {
             // render the edit page with the tournament object
-            res.render('index', { title: 'Tournament Edit', page: 'tournaments/edit', tournament: {} });
-
-            
+            res.render('index', { title: 'Tournament Edit', page: 'tournaments/edit', tournament: tournament, displayName: UserDisplayName(req) });
         }
     });
 }
@@ -133,7 +132,7 @@ export function displayViewTournament(req, res, next) {
             // Check if the tournament exists
             if (tournament) {
                 // Render the view.ejs template with the tournament information
-                res.render('index', { title: 'Tournament View', page: 'tournaments/view', tournament });
+                res.render('index', { title: 'Tournament View', page: 'tournaments/view', tournament,displayName: UserDisplayName(req) });
             } else {
                 // Send a 404 status and an error message if the tournament is not found
                 res.status(404).send('Tournament not found');
@@ -141,3 +140,44 @@ export function displayViewTournament(req, res, next) {
         }
     });
 }
+
+// Display the Join page
+export function displayJoinPage(req, res, next) {
+    let id = req.params.id;
+  
+    tournamentsModel.findById(id, (err, tournament) => {
+      if (err) {
+        console.error(err);
+        res.end(err);
+      } else {
+        res.render('index', { title: 'Join Tournament', page: 'tournaments/player', tournament,displayName: UserDisplayName(req) });
+      }
+    });
+  }
+  
+  // Process the Join page
+  export function processJoinPage(req, res, next) {
+    let id = req.params.id;
+    let playerName = req.body.playerName;
+  
+    tournamentsModel.findById(id, (err, tournament) => {
+      if (err) {
+        console.error(err);
+        res.end(err);
+      } else {
+        // Add the player to the tournament's players array
+        tournament.players.push(playerName);
+  
+        // Save the updated tournament
+        tournament.save((err) => {
+          if (err) {
+            console.error(err);
+            res.end(err);
+          } else {
+            res.redirect('/tournaments/view/' + id);
+          }
+        });
+      }
+    });
+  }
+  
