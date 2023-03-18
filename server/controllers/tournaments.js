@@ -29,12 +29,16 @@ export function processAddPage(req, res, next) {
     // create a new book object from the request's body
     let newTournament = new tournamentsModel({
         name: req.body.name,
-        author: req.body.author,
-        published: req.body.published,
-        description: req.body.description,
-        price: req.body.price
+        game: req.body.game,
+        organizer: req.body.organizer,
+        start_date: req.body.start_date,
+        end_date: req.body.end_date,
+        max_players: req.body.max_players,
+        description: req.body.description
+    
     });
-
+    
+ {
     // save the new book to the database
     newTournament.save((err) => {
         if (err) {
@@ -46,7 +50,7 @@ export function processAddPage(req, res, next) {
             res.redirect('/tournaments/list');
         }
     });
-}
+}}
 
 // GET the Book Details page in order to edit an existing Book
 export function displayEditPage(req, res, next) {
@@ -77,10 +81,12 @@ export function processEditPage(req, res, next) {
     let updatedTournament = new tournamentsModel({
         _id: id,
         name: req.body.name,
-        author: req.body.author,
-        published: req.body.published,
-        description: req.body.description,
-        price: req.body.price
+        game: req.body.game,
+        organizer: req.body.organizer,
+        start_date: req.body.start_date,
+        end_date: req.body.end_date,
+        max_players: req.body.max_players,
+        description: req.body.description
     });
 
     // update the book in the database

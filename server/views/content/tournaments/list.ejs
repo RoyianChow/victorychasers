@@ -1,67 +1,65 @@
-<main class="container">
+<main class="container-fluid">
     <div class="row">
-        <div class="offset-md-1 col-md-11">
+        <div class="col-12">
             <h1>
                 <%= title %>
             </h1>
             <!--changed the reference-->
-            <a href="/tournaments/add" class="btn btn-primary" role="button">
-                <i class="fas fa-plus-circle"></i> Add a Book</a>
-            <br>
+            <a href="/tournaments/add" class="btn btn-primary mb-3" role="button">
+                <i class="fas fa-plus-circle"></i> Add a tournament</a>
             <table class="table table-bordered table-striped table-hover">
                 <!-- Header Row-->
                 <tr class="d-flex">
                     <th class="text-center col-2">Title</th>
-                    <th class="text-center col-2">Author</th>
-                    <th class="text-center col-1">Year</th>
-                    <th class="col-4">Description</th>
-                    <th class="text-center col-1">Price</th>
-                    <th class="text-center col-1"></th>
-                    <th class="text-center col-1"></th>
+                    <th class="text-center col-2">Game</th>
+                    <th class="text-center col-1">Organizer</th>
+                    <th class="col-1">Start Date</th>
+                    <th class="col-1">End Date</th>
+                    <th class="text-center col-1">Max Players</th>
+                    <th class="text-center col-2">Description</th>
+                    <th class="text-center col-1">Edit</th>
+                    <th class="text-center col-1">Delete</th>
                 </tr>
 
                 <!-- Repeatable Template Row -->
-
                 <% for(let count=0; count < tournaments.length; count++) { %>
-                    <tr class="d-flex">
-                        <td class="text-center col-2">
-                            <%= tournaments[count].name %>
-                        </td>
-                        <td class="text-center col-2">
-                            <%= tournaments[count].author %>
-                        </td>
-                        <td class="text-center col-1">
-                            <%= tournaments[count].published %>
-                        </td>
-                        <td class="col-4">
-                            <%= tournaments[count].description %>
-                        </td>
-                        <td class="text-center col-1">
-                            <%= tournaments[count].price %>
-                        </td>
-                                    <!--added edit and delete buttons-->
-
-                        <td class="text-center col-1">
-                            <a href="/tournaments/edit/<%= tournaments[count]._id %>" class="btn btn-primary" role="button">
-                                <i class="fas fa-edit"></i> Edit</a>
-                        </td>
-                        <td class="text-center col-1">
-                          
-                            <a href="/tournaments/delete/<%= tournaments[count]._id %>" class="btn btn-primary" role="button">
-                                <i class="fas fa-trash-alt"></i> Delete</a>
-                            
-                        </td>
-                    </tr>
-                    <% } %>
+                <tr class="d-flex">
+                    <td class="text-center col-2">
+                        <%= tournaments[count].name %>
+                    </td>
+                    <td class="text-center col-2">
+                        <%= tournaments[count].game %>
+                    </td>
+                    <td class="text-center col-1">
+                        <%= tournaments[count].organizer %>
+                    </td>
+                    <td class="col-1">
+                        <%= tournaments[count].start_date %>
+                    </td>
+                    <td class="col-1">
+                        <%= tournaments[count].end_date %>
+                    </td>
+                    <td class="text-center col-1">
+                        <%= tournaments[count].max_players %>
+                    </td>
+                    <td class="text-center col-2">
+                        <%= tournaments[count].description %>
+                    </td>
+                    
+                    <!--added edit and delete buttons-->
+                    <td class="text-center col-1">
+                        <a href="/tournaments/edit/<%= tournaments[count]._id %>" class="btn btn-primary btn-sm" role="button">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                    </td>
+                    <td class="text-center col-1">
+                        <a href="/tournaments/delete/<%= tournaments[count]._id %>" class="btn btn-danger btn-sm" role="button">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </a>
+                    </td>
+                </tr>
+                <% } %>
             </table>
         </div>
     </div>
 </main>
-
-
-
-
-
-
-
-

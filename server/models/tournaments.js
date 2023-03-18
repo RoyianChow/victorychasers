@@ -7,10 +7,12 @@ const Schema = mongoose.Schema;
 
 const TournamentSchema = new Schema({
     name: String,
-    author: String,
-    published: String,
-    description: String,
-    price: String
+    game: String,
+    organizer: String,
+    start_date: String,
+    end_date: String,
+    max_players: Number,
+    description: String
 }, {
     timestamps: true,
     collection: 'tournaments'

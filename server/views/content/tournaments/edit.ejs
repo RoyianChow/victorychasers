@@ -3,58 +3,93 @@
     <div class="row">
         <div class="offset-md-1 col-md-11">
             <h1><%= title %></h1>
+           
 
             <form class="form" method="POST">
                 <div class="form-group">
-                    <label for="nameTextField">tournament Title</label>
+                    <label for="nameTextField">Book Title</label>
                     <input type="text" class="form-control"
                     id="nameTextField"
-                    placeholder="Enter the tournament Title"
+                    placeholder="Enter the Tournament title"
                     name="name" 
                     value="<%= tournament.name %>"
                     required>
                 </div>
-
+               
                 <div class="form-group">
-                    <label for="authorTextField">Author</label>
+                    <label for="authorTextField">Game</label>
                     <input type="text" class="form-control"
-                    id="authorTextField"
-                    placeholder="Enter the tournament's Author"
-                    name="author" 
-                    value="<%= tournament.author %>"
+                    id="gameTextField"
+                    placeholder="Enter the Game"
+                    name="game" 
+                    value="<%= tournament.game %>"
                     required>
                 </div>
 
                 <div class="form-group">
-                    <label for="publishedTextField">Year</label>
+                    <label for="organizerTextField">Organizer/Host</label>
                     <input type="text" class="form-control"
-                    id="publishedTextField"
-                    placeholder="Enter the Year of Publication"
-                    name="published" 
-                    value="<%= tournament.published %>"
+                    id="organizerTextField"
+                    placeholder="Enter your name"
+                    name="organizer"
+                    value="<%= tournament.organizer %>"
                     required>
                 </div>
 
                 <div class="form-group">
-                    <label for="descriptionTextArea">Description</label>
-                    <textarea type="text" class="form-control"
-                    id="descriptionTextArea"
-                    placeholder="Enter the a brief description of the tournament"
-                    name="description" 
-                    required>
-                    <%= tournament.description %>
-                    </textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="priceTextField">Price</label>
+                    <label for="start_dateTextField">Start Date</label>
                     <input type="text" class="form-control"
-                    id="priceTextField"
-                    placeholder="Enter the tournament's Price"
-                    name="price" 
-                    value="<%= tournament.price %>"
+                           id="start_dateTextField"
+                           placeholder="Enter the Tournaments Start Date in this format (DD/MM/YY)"
+                           name="start_date"
+                           value="<%= tournament.start_date %>"
+                           required
+                           pattern="\d{2}\/\d{2}\/\d{2}">
+                    <div class="invalid-feedback">Please enter a date in the format DD/MM/YY.</div>
+                </div>
+                <div class="form-group">
+                    <label for="end_dateTextField">End Date</label>
+                    <input type="text" class="form-control"
+                    id="end_dateTextField"
+                    placeholder="Enter the Tournaments End Date"
+                    name="end_date"
+                    value="<%= tournament.end_date %>"
                     required>
                 </div>
+                <div class="form-group">
+                    <label for="max_playersTextField">Max Players</label>
+                    <input type="text" class="form-control"
+                           id="max_playersTextField"
+                           placeholder="Enter max players"
+                           name="max_players" 
+                           value="<%= tournament.max_players %>"
+                           required>
+                    <div class="invalid-feedback">Please enter a valid number for Max Players.</div>
+                  </div>
+                  
+                  <script>
+                    // add event listener to the form submit button
+                    const form = document.querySelector('form');
+                    form.addEventListener('submit', function(event) {
+                      const maxPlayersInput = document.getElementById('max_playersTextField');
+                      if (isNaN(maxPlayersInput.value)) {
+                        maxPlayersInput.classList.add('is-invalid');
+                        event.preventDefault();
+                      } else {
+                        maxPlayersInput.classList.remove('is-invalid');
+                      }
+                    });
+                  </script>
+
+
+<div class="form-group">
+    <label for="descriptionTextArea">Description</label>
+    <textarea type="text" class="form-control"
+              id="descriptionTextArea"
+              placeholder="Enter a brief description of the tournament"
+              name="description"
+              required><%= tournament.description %></textarea>
+</div>
 
                 <button class="btn btn-primary" type="submit">
                     <i class="fas fa-edit"></i> Submit</button>
@@ -76,3 +111,20 @@
 
 
 
+<style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+  
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+  </style>
