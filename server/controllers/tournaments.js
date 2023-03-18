@@ -3,6 +3,7 @@
 // Student ID: 301256903
 // Web app name: comp229-w2023-midterm-301256903.azurewebsites.net
 // define the book model
+import tournaments from '../models/tournaments.js';
 import tournamentsModel from '../models/tournaments.js';
 
 /* GET books List page. READ */
@@ -19,7 +20,8 @@ export function displayTournamentList(req, res, next) {
 //  GET the Book Details page in order to add a new Book
 export function displayAddPage(req, res, next) {
     // render the add page with a default empty book object
-    res.render('content/tournaments/add', { title: 'Add a New Tournament', tournament: {} });
+    res.render('index', { title: 'Tournament Add', page: 'tournaments/add', tournament: {} });
+
 }
 
 // POST process the Book Details page and create a new Book - CREATE
@@ -59,7 +61,9 @@ export function displayEditPage(req, res, next) {
         }
         else {
             // render the edit page with the book object
-            res.render('content/tournaments/edit', { title: 'Edit Tournament', tournament: tournament });
+            res.render('index', { title: 'Tournament Edit', page: 'tournaments/edit', tournament: {} });
+
+            
         }
     });
 }
