@@ -17,7 +17,7 @@ import mongoose from 'mongoose';
 
 // import the router data
 import indexRouter from '../routes/index.js';
-import booksRouter from '../routes/books.js';
+import tournamentsRouter from '../routes/tournaments.js';
 
 const app = new express();
 
@@ -48,7 +48,7 @@ app.use(express.static(path.join(__dirname, '../../node_modules')));
 
 // use routes
 app.use('/', indexRouter);
-app.use('/', booksRouter);
+app.use('/', tournamentsRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

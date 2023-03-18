@@ -10,7 +10,7 @@
   },
   "author": "royian chowdhury",
   "license": "ISC",
-   "dependencies": {
+  "dependencies": {
     "body-parser": "^1.20.1",
     "connect": "^3.7.0",
     "connect-flash": "^0.1.1",

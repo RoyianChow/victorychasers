@@ -5,7 +5,7 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-const BookSchema = new Schema({
+const TournamentSchema = new Schema({
     name: String,
     author: String,
     published: String,
@@ -13,7 +13,7 @@ const BookSchema = new Schema({
     price: String
 }, {
     timestamps: true,
-    collection: 'books'
+    collection: 'tournaments'
 });
 
-export default mongoose.model('Books', BookSchema);
+export default mongoose.model('Tournaments', TournamentSchema);

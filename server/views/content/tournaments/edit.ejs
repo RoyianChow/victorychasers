@@ -1,32 +1,28 @@
-<!--
-File name: comp229_midterm_301256903
-Name: Royian Chowdhury
-Student ID: 301256903
-Web app name: comp229_midterm_301256903.azurewebsites.net
--->
-
 
 <main class="container">
     <div class="row">
-        <div class="offset-md-1 col-md-11">
-            <h1>
-                <%= title %>
-            </h1>
+        <div class="offset-md-3 col-md-6">
+            <h1><%= title %></h1>
+
             <form class="form" method="POST">
                 <div class="form-group">
-                    <label for="nameTextField">Book Title</label>
+                    <label for="nameTextField">tournament Title</label>
                     <input type="text" class="form-control"
                     id="nameTextField"
-                    placeholder="Enter the Book Title"
-                    name="name" required>
+                    placeholder="Enter the tournament Title"
+                    name="name" 
+                    value="<%= tournament.name %>"
+                    required>
                 </div>
 
                 <div class="form-group">
                     <label for="authorTextField">Author</label>
                     <input type="text" class="form-control"
                     id="authorTextField"
-                    placeholder="Enter the Book's Author"
-                    name="author" required>
+                    placeholder="Enter the tournament's Author"
+                    name="author" 
+                    value="<%= tournament.author %>"
+                    required>
                 </div>
 
                 <div class="form-group">
@@ -34,32 +30,40 @@ Web app name: comp229_midterm_301256903.azurewebsites.net
                     <input type="text" class="form-control"
                     id="publishedTextField"
                     placeholder="Enter the Year of Publication"
-                    name="published" required>
+                    name="published" 
+                    value="<%= tournament.published %>"
+                    required>
                 </div>
 
                 <div class="form-group">
                     <label for="descriptionTextArea">Description</label>
                     <textarea type="text" class="form-control"
                     id="descriptionTextArea"
-                    placeholder="Enter the a brief description of the book"
-                    name="description" required></textarea>
+                    placeholder="Enter the a brief description of the tournament"
+                    name="description" 
+                    required>
+                    <%= tournament.description %>
+                    </textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="priceTextField">Price</label>
                     <input type="text" class="form-control"
                     id="priceTextField"
-                    placeholder="Enter the Book's Price"
-                    name="price" required>
+                    placeholder="Enter the tournament's Price"
+                    name="price" 
+                    value="<%= tournament.price %>"
+                    required>
                 </div>
 
                 <button class="btn btn-primary" type="submit">
                     <i class="fas fa-edit"></i> Submit</button>
                 
-                    <a href="/books/list" class="btn btn-warning">
+                    <a href="/tournaments/list" class="btn btn-warning">
                         <i class="fas fa-undo"></i> Cancel</a>
 
             </form>
         </div>
+
     </div>
-</main>
+</div>

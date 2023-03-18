@@ -5,7 +5,7 @@
                 <%= title %>
             </h1>
             <!--changed the reference-->
-            <a href="/books/add" class="btn btn-primary" role="button">
+            <a href="/tournaments/add" class="btn btn-primary" role="button">
                 <i class="fas fa-plus-circle"></i> Add a Book</a>
             <br>
             <table class="table table-bordered table-striped table-hover">
@@ -22,32 +22,32 @@
 
                 <!-- Repeatable Template Row -->
 
-                <% for(let count=0; count < books.length; count++) { %>
+                <% for(let count=0; count < tournaments.length; count++) { %>
                     <tr class="d-flex">
                         <td class="text-center col-2">
-                            <%= books[count].name %>
+                            <%= tournaments[count].name %>
                         </td>
                         <td class="text-center col-2">
-                            <%= books[count].author %>
+                            <%= tournaments[count].author %>
                         </td>
                         <td class="text-center col-1">
-                            <%= books[count].published %>
+                            <%= tournaments[count].published %>
                         </td>
                         <td class="col-4">
-                            <%= books[count].description %>
+                            <%= tournaments[count].description %>
                         </td>
                         <td class="text-center col-1">
-                            <%= books[count].price %>
+                            <%= tournaments[count].price %>
                         </td>
                                     <!--added edit and delete buttons-->
 
                         <td class="text-center col-1">
-                            <a href="/books/edit/<%= books[count]._id %>" class="btn btn-primary" role="button">
+                            <a href="/tournaments/edit/<%= tournaments[count]._id %>" class="btn btn-primary" role="button">
                                 <i class="fas fa-edit"></i> Edit</a>
                         </td>
                         <td class="text-center col-1">
                           
-                            <a href="/books/delete/<%= books[count]._id %>" class="btn btn-primary" role="button">
+                            <a href="/tournaments/delete/<%= tournaments[count]._id %>" class="btn btn-primary" role="button">
                                 <i class="fas fa-trash-alt"></i> Delete</a>
                             
                         </td>
