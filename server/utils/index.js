@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { Secret } from '../config/config.js';
+import { Secret } from '../config/index.js';
 
 /// Return the user display name from session
 export function UserDisplayName(req){

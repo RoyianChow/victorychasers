@@ -46,7 +46,7 @@ import tournamentsApiRouter from '../routes/api/tournaments-api.js';
 const app = express();
 
 // Complete the DB Configuration
-import { MongoURI, Secret } from '../config/config.js';
+import { MongoURI, Secret } from '../config/index.js';
 
 mongoose.connect(MongoURI);
 const db = mongoose.connection;

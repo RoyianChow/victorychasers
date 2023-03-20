@@ -8,9 +8,9 @@ import { DisplayLoginPage,
 const router = Router();
 
 //Display Login Page
-router.get('/auth/login', DisplayLoginPage);
+router.get('/login', DisplayLoginPage);
 //Process Login Page
-router.post('/auth/login', ProcessLoginPage);
+router.post('/login', ProcessLoginPage);
 
 // Display Registration Page
 router.get('/register', DisplayRegistrationPage);
