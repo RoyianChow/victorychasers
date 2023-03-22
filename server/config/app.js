@@ -1,7 +1,4 @@
-// File name: comp229_midterm_301256903
-// Name: Royian Chowdhury
-// Student ID: 301256903
-// Web app name: comp229-w2023-midterm-301256903.azurewebsites.net
+
 
 import createError from 'http-errors';
 import express from 'express';
@@ -18,15 +15,15 @@ import passport from 'passport';
 import passportLocal from 'passport-local';
 import flash from 'connect-flash';
 import logger from 'morgan';
-
+// Auth Step 2 - define our authentication strategy
+let localStrategy = passportLocal.Strategy;
 // Auth Step 3 - import the user model
 import User from '../models/user.js';
 
 // import db package
 import mongoose from 'mongoose';
 
-// Auth Step 2 - define our authentication strategy
-let localStrategy = passportLocal.Strategy;
+
 
 import cors from 'cors';
 import passportJWT from 'passport-jwt';

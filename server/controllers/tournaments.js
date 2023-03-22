@@ -1,8 +1,4 @@
-//File name: comp229_midterm_301256903
-//Name: Royian Chowdhury
-// Student ID: 301256903
-// Web app name: comp229-w2023-midterm-301256903.azurewebsites.net
-// define the tournament model
+
 import tournamentsModel from '../models/tournaments.js';
 
 import { UserDisplayName } from "../utils/index.js";
