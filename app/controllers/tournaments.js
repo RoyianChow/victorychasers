@@ -156,7 +156,7 @@ export function displayJoinPage(req, res, next) {
     let id = req.params.id;
     let playerName = req.body.playerName;
   
-    tournamentsModel.findById(id, (err, tournament) => {
+    tournamentsModel.findById(id, (err, tournament) => {//
       if (err) {
         console.error(err);
         res.end(err);

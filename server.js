@@ -4,7 +4,7 @@ debug('comp-229');
 import http from 'http';
 import { HttpError} from 'http-errors';
 
-import app from './server/config/app.js';
+import app from './app/app.js';
 
 const PORT = normalizePort(process.env.PORT || '3000');
 app.set('port', PORT);
