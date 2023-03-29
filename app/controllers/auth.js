@@ -63,28 +63,29 @@ export function ProcessRegisterPage(req, res, next){
     });
 }
 
-export function ProcessLoginPage(req, res, next){
-    passport.authenticate('local', function (err, user, info){
-        if(err){
-            console.error(err);
-            res.end(err);
+export function ProcessLoginPage(req, res, next) {
+    passport.authenticate('local', function (err, user, info) {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ message: err.message });
+      }
+  
+      if (!user) {
+        req.flash('loginMessage', 'Authentication Error');
+        return res.redirect('/login');
+      }
+  
+      req.logIn(user, function (err) {
+        if (err) {
+          console.error(err);
+          return res.status(500).json({ message: err.message });
         }
-
-        if(!user){
-            req.flash('loginMessage', 'Authentication Error')
-        }
-
-        req.logIn(user, function(err){
-            if(err){
-                console.error(err);
-                res.end(err);
-            }
-
-            return res.redirect('/')
-        })
-
+  
+        return res.redirect('/');
+      });
     })(req, res, next);
-}
+  }
+  
 
 export function ProcessLogoutPage(req, res, next){
     req.logOut(function(err) {

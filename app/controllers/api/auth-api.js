@@ -2,39 +2,40 @@ import passport from 'passport';
 import userModel from '../../models/user.js';
 import { GenerateToken } from '../../utils/index.js';
 
-export function processLogin(req, res, next){
+export function processLogin(req, res, next) {
     passport.authenticate('local', (err, user, info) => {
-        if(err){
-            console.error(err);
-            res.end(err);
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ message: err.message });
+      }
+  
+      if (!user) {
+        return res.json({ success: false, msg: 'ERROR: Authentication Failed' });
+      }
+  
+      req.logIn(user, (err) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).json({ message: err.message });
         }
-
-        if(!user){
-            return res.json({success: false, msg: 'ERROR: Authentication Failed'});
-        }
-
-        req.logIn(user, (err) => {
-            if(err){
-                console.error(err);
-                res.end(err);
-            }
-
-            const authToken = GenerateToken(user);
-
-            return res.json({
-                success: true,
-                msg: 'User Logged In Successfully',
-                user: {
-                    id: user._id,
-                    displayName: user.displayName,
-                    username: user.username,
-                    emailAddress: user.emailAddress
-                },
-                token: authToken
-            });
-        })
+  
+        const authToken = GenerateToken(user);
+  
+        return res.json({
+          success: true,
+          msg: 'User Logged In Successfully',
+          user: {
+            id: user._id,
+            displayName: user.displayName,
+            username: user.username,
+            emailAddress: user.emailAddress,
+          },
+          token: authToken,
+        });
+      });
     })(req, res, next);
-}
+  }
+  
 
 export function processRegistration(req, res, next){
     let newUser = new userModel({

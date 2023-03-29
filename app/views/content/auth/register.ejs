@@ -11,7 +11,7 @@
               </div>
               <% } %>
 
-              <form method="POST" id="registerForm" novalidate>
+              <form method="POST" id="registerForm" novalidate onsubmit="return validateForm();">
                 <p class="hint-text">Create your own account. It's free and only takes a minute.</p>
 
                 <div class="form-group">
@@ -79,3 +79,17 @@
     </div>
   </div>
 </div>
+
+<script>
+  function validateForm() {
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      return false;
+    }
+
+    return true;
+  }
+</script>
