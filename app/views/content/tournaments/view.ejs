@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,114 +78,90 @@
       <p><strong>Description:</strong> <%= tournament.description %></p>
       <a href="/tournaments/list">Back to tournament list</a>
       <!-- Add the Join button -->
-      <a href="/tournaments/player/<%= tournament._id %>" class="btn btn-success">
-        <i class="fas fa-user-plus"></i> Join Tournament
+      <a href="../players/add" class="btn btn-primary mb-3" role="button">
+        <i class="fas fa-plus-circle"></i> Add a player</a>
+    
+<br>
+<br>
+      <a onclick="change_text()"  class="btn btn-success">
+        <i class="fas fa-user-plus"></i> Add win or loss
       </a>
+     
+
+   
     </div>
     <div id="tournament">
       <!-- Tournament bracket code -->
-      <h1>2013 NCAA Tournament - Midwest Bracket</h1>
+      <h1><strong> <%= tournament.game %></strong></h1>
 <main id="tournament">
   <ul class="round round-1">
     <li class="spacer">&nbsp;</li>
-    
-    <li class="game game-top winner">Lousville <span>79</span></li>
+
+    <li class="game game-top winner">Empty<span id="t2">00</span></li>
     <li class="game game-spacer">&nbsp;</li>
-    <li class="game game-bottom ">NC A&T <span>48</span></li>
+    <li class="game game-spacer">A &nbsp; </li>
+    <li class="game game-bottom winner">Empty<span id="t3">00</span></li>
+
+    <li class="spacer">&nbsp;</li>
+    <li class="spacer">&nbsp;</li>
+
+    
+    <li class="game game-top winner">Empty<span id="t1">00</span></li>
+    <li class="game game-spacer">&nbsp;</li>
+    <li class="game game-spacer">B &nbsp;</li>
+    <li class="game game-bottom winner">Empty<span id="t1">00</span></li>
 
     <li class="spacer">&nbsp;</li>
     
-    <li class="game game-top winner">Colo St <span>84</span></li>
+    <li class="game game-top winner">Empty<span id="t1">00</span></li>
     <li class="game game-spacer">&nbsp;</li>
-    <li class="game game-bottom ">Missouri <span>72</span></li>
+    <li class="game game-spacer">C &nbsp;</li>
+    <li class="game game-bottom winner">Empty<span id="t1">00</span></li>
 
     <li class="spacer">&nbsp;</li>
     
-    <li class="game game-top ">Oklahoma St <span>55</span></li>
+    <li class="game game-top winner">Empty<span id="t1">00</span></li>
     <li class="game game-spacer">&nbsp;</li>
-    <li class="game game-bottom winner">Oregon <span>68</span></li>
-
-    <li class="spacer">&nbsp;</li>
-    
-    <li class="game game-top winner">Saint Louis <span>64</span></li>
-    <li class="game game-spacer">&nbsp;</li>
-    <li class="game game-bottom ">New Mexico St <span>44</span></li>
-
-    <li class="spacer">&nbsp;</li>
-    
-    <li class="game game-top winner">Memphis <span>54</span></li>
-    <li class="game game-spacer">&nbsp;</li>
-    <li class="game game-bottom ">St Mary's <span>52</span></li>
-
-    <li class="spacer">&nbsp;</li>
-    
-    <li class="game game-top winner">Mich St <span>65</span></li>
-    <li class="game game-spacer">&nbsp;</li>
-    <li class="game game-bottom ">Valparaiso <span>54</span></li>
-
-    <li class="spacer">&nbsp;</li>
-    
-    <li class="game game-top winner">Creighton <span>67</span></li>
-    <li class="game game-spacer">&nbsp;</li>
-    <li class="game game-bottom ">Cincinnati <span>63</span></li>
-
-    <li class="spacer">&nbsp;</li>
-    
-    <li class="game game-top winner">Duke <span>73</span></li>
-    <li class="game game-spacer">&nbsp;</li>
-    <li class="game game-bottom ">Albany <span>61</span></li>
+    <li class="game game-spacer">D &nbsp;</li>
+    <li class="game game-bottom winner">Empty<span id="t1">00</span></li>
 
     <li class="spacer">&nbsp;</li>
   </ul>
   <ul class="round round-2">
-    <li class="spacer">&nbsp;</li>
-    
-    <li class="game game-top winner">Lousville <span>82</span></li>
-    <li class="game game-spacer">&nbsp;</li>
-    <li class="game game-bottom ">Colo St <span>56</span></li>
 
     <li class="spacer">&nbsp;</li>
     
-    <li class="game game-top winner">Oregon <span>74</span></li>
+    <li class="game game-top winner">Empty<span id="t1">00</span></li>
     <li class="game game-spacer">&nbsp;</li>
-    <li class="game game-bottom ">Saint Louis <span>57</span></li>
+    <li class="game game-spacer">E &nbsp;</li>
+    <li class="game game-bottom winner">Empty<span id="t1">00</span></li>
 
     <li class="spacer">&nbsp;</li>
     
-    <li class="game game-top ">Memphis <span>48</span></li>
-    <li class="game game-spacer">&nbsp;</li>
-    <li class="game game-bottom winner">Mich St <span>70</span></li>
+    <li class="game game-top winner">Empty<span id="t1">00</span></li>
+    <li class="game game-spacer">&nbsp;</li>    
+    <li class="game game-spacer">F &nbsp;</li>
+    <li class="game game-bottom winner">Empty<span id="t1">00</span></li>
 
     <li class="spacer">&nbsp;</li>
     
-    <li class="game game-top ">Creighton <span>50</span></li>
+   
+  </ul>
+  <ul class="round round-3">
+    <li class="spacer">&nbsp;</li>
+    
+    <li class="game game-top winner">Empty<span id="t1">00</span></li>
     <li class="game game-spacer">&nbsp;</li>
-    <li class="game game-bottom winner">Duke <span>66</span></li>
+    <li class="game game-spacer">G &nbsp;</li>
+    <li class="game game-bottom winner">Empty<span id="t1">00</span></li>
 
     <li class="spacer">&nbsp;</li>
   </ul>
   <ul class="round round-3">
     <li class="spacer">&nbsp;</li>
-    
-    <li class="game game-top winner">Lousville <span>77</span></li>
-    <li class="game game-spacer">&nbsp;</li>
-    <li class="game game-bottom ">Oregon <span>69</span></li>
 
-    <li class="spacer">&nbsp;</li>
-    
-    <li class="game game-top ">Mich St <span>61</span></li>
-    <li class="game game-spacer">&nbsp;</li>
-    <li class="game game-bottom winner">Duke <span>71</span></li>
-
-    <li class="spacer">&nbsp;</li>
-  </ul>
-  <ul class="round round-4">
-    <li class="spacer">&nbsp;</li>
-    
     <li class="game game-top winner">Lousville <span>85</span></li>
-    <li class="game game-spacer">&nbsp;</li>
-    <li class="game game-bottom ">Duke <span>63</span></li>
-    
+
     <li class="spacer">&nbsp;</li>
   </ul>   
 </main>
@@ -192,3 +169,60 @@
   </main>
 </body>
 </html>
+<script>
+ 
+
+  function addPlayer()
+  {
+    
+    
+
+    document.getElementById("t3").innerHTML =username;
+    
+  }
+  function change_text(){
+    var round = prompt("Which match? Type one letter:");
+    switch(round)
+    {
+    case "a":
+    var score1 = prompt("Win or loss?");
+      document.getElementById("t3").innerHTML = score1;
+      if(score1 = "win".toLowerCase)
+      {
+        document.getElementById("t2").innerHTML = "loss";
+      }
+      else if ((score1 = "loss".toLowerCase))
+      {
+        document.getElementById("t2").innerHTML = "win";
+
+      }
+      else{
+        document.getElementById("t3").innerHTML = "n/a";
+        document.getElementById("t2").innerHTML = "n/a";
+
+
+      }
+      break;
+      case B:
+    var score1 = prompt("Win or loss?");
+      document.getElementById("t1").innerHTML = score1;
+      if(score1 = "win".toLowerCase)
+      {
+        document.getElementById("t2").innerHTML = "loss";
+      }
+      else if ((score1 = "loss".toLowerCase))
+      {
+        document.getElementById("t2").innerHTML = "win";
+
+      }
+      else{
+        document.getElementById("t1").innerHTML = "n/a";
+        document.getElementById("t2").innerHTML = "n/a";
+
+
+      }
+      break;
+    }
+
+  }
+  </script>

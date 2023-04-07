@@ -1,7 +1,7 @@
 
 import { Router } from "express";
 
-import { displayAddPage, displayTournamentList, displayViewTournament, processAddPage, processDelete, processEditPage,displayEditPage, displayJoinPage, processJoinPage } from "../controllers/tournaments.js";
+import { displayAddPage, displayTournamentList, displayViewTournament, processAddPage, processDelete, processEditPage,displayEditPage,  } from "../controllers/tournaments.js";
 
 const router = Router();
 
@@ -23,9 +23,6 @@ router.post('/tournaments/edit/:id', processEditPage);
 router.get('/tournaments/delete/:id', processDelete);
 // GET the Tournament Details page in order to edit an existing Tournament
 router.get('/tournaments/view/:id', displayViewTournament);
-
-router.get('/tournaments/join/:id', displayJoinPage);
-router.post('/tournaments/join/:id', processJoinPage);
 
 
 
