@@ -203,7 +203,7 @@ export function processPlayerAddPage(req, res, next) {
                     res.end(err);
                 } else {
                     // redirect to the tournament list page
-                    res.redirect('/tournaments/list');
+                    res.redirect('/tournaments/view/'+id);
                 }
             });
         }
