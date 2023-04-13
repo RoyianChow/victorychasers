@@ -78,12 +78,17 @@
       <p><strong>Description:</strong> <%= tournament.description %></p>
       <a href="/tournaments/list">Back to tournament list</a>
       <!-- Add the Join button -->
-      <a href="../players/add" class="btn btn-primary mb-3" role="button">
-        <i class="fas fa-plus-circle"></i> Add a player</a>
+      <a href="/tournaments/player/<%= id %>" class="btn btn-primary mb-3" role="button" id="btnJoin">
+        <i class="fas fa-plus-circle"></i> Join!</a>
+
+      
+
+          <!-- Repeatable Template Row -->
+          
     
 <br>
 <br>
-      <a onclick="change_text()"  class="btn btn-success">
+      <a class="btn btn-success">
         <i class="fas fa-user-plus"></i> Add win or loss
       </a>
      
@@ -96,34 +101,38 @@
 <main id="tournament">
   <ul class="round round-1">
     <li class="spacer">&nbsp;</li>
+    <% let teamIndex = 0; %>
+    
+    
+    <li class="spacer">&nbsp;</li>
+      
+ 
+    <li class="game game-top winner" id="team<%= teamIndex %>">  <%- players[teamIndex] ? players[teamIndex].teamName : 'Empty' %><span id="t<%= teamIndex %>">00</span>
 
-    <li class="game game-top winner">Empty<span id="t2">00</span></li>
     <li class="game game-spacer">&nbsp;</li>
     <li class="game game-spacer">A &nbsp; </li>
-    <li class="game game-bottom winner">Empty<span id="t3">00</span></li>
+    <li class="game game-bottom winner" id="team<%= teamIndex %>">  <%- players[teamIndex] ? players[teamIndex].teamName : 'Empty' %><span id="t<%= teamIndex %>">00</span>
 
     <li class="spacer">&nbsp;</li>
-    <li class="spacer">&nbsp;</li>
+    <li class="game game-top winner" id="team<%= teamIndex %>">  <%- players[teamIndex] ? players[teamIndex].teamName : 'Empty' %><span id="t<%= teamIndex %>">00</span>
 
-    
-    <li class="game game-top winner">Empty<span id="t1">00</span></li>
     <li class="game game-spacer">&nbsp;</li>
     <li class="game game-spacer">B &nbsp;</li>
-    <li class="game game-bottom winner">Empty<span id="t1">00</span></li>
+    <li class="game game-bottom winner" id="team<%= teamIndex %>">  <%- players[teamIndex] ? players[teamIndex].teamName : 'Empty' %><span id="t<%= teamIndex %>">00</span>
 
     <li class="spacer">&nbsp;</li>
-    
-    <li class="game game-top winner">Empty<span id="t1">00</span></li>
+    <li class="game game-top winner" id="team<%= teamIndex %>">  <%- players[teamIndex] ? players[teamIndex].teamName : 'Empty' %><span id="t<%= teamIndex %>">00</span>
+
     <li class="game game-spacer">&nbsp;</li>
     <li class="game game-spacer">C &nbsp;</li>
-    <li class="game game-bottom winner">Empty<span id="t1">00</span></li>
+    <li class="game game-bottom winner" id="team<%= teamIndex %>">  <%- players[teamIndex] ? players[teamIndex].teamName : 'Empty' %><span id="t<%= teamIndex %>">00</span>
 
     <li class="spacer">&nbsp;</li>
-    
-    <li class="game game-top winner">Empty<span id="t1">00</span></li>
+    <li class="game game-top winner" id="team<%= teamIndex %>">  <%- players[teamIndex] ? players[teamIndex].teamName : 'Empty' %><span id="t<%= teamIndex %>">00</span>
+
     <li class="game game-spacer">&nbsp;</li>
     <li class="game game-spacer">D &nbsp;</li>
-    <li class="game game-bottom winner">Empty<span id="t1">00</span></li>
+    <li class="game game-bottom winner" id="team<%= teamIndex %>">  <%- players[teamIndex] ? players[teamIndex].teamName : 'Empty' %><span id="t<%= teamIndex %>">00</span>
 
     <li class="spacer">&nbsp;</li>
   </ul>
@@ -170,59 +179,13 @@
 </body>
 </html>
 <script>
- 
-
-  function addPlayer()
-  {
-    
-    
-
-    document.getElementById("t3").innerHTML =username;
-    
-  }
-  function change_text(){
-    var round = prompt("Which match? Type one letter:");
-    switch(round)
-    {
-    case "a":
-    var score1 = prompt("Win or loss?");
-      document.getElementById("t3").innerHTML = score1;
-      if(score1 = "win".toLowerCase)
-      {
-        document.getElementById("t2").innerHTML = "loss";
-      }
-      else if ((score1 = "loss".toLowerCase))
-      {
-        document.getElementById("t2").innerHTML = "win";
-
-      }
-      else{
-        document.getElementById("t3").innerHTML = "n/a";
-        document.getElementById("t2").innerHTML = "n/a";
-
-
-      }
-      break;
-      case B:
-    var score1 = prompt("Win or loss?");
-      document.getElementById("t1").innerHTML = score1;
-      if(score1 = "win".toLowerCase)
-      {
-        document.getElementById("t2").innerHTML = "loss";
-      }
-      else if ((score1 = "loss".toLowerCase))
-      {
-        document.getElementById("t2").innerHTML = "win";
-
-      }
-      else{
-        document.getElementById("t1").innerHTML = "n/a";
-        document.getElementById("t2").innerHTML = "n/a";
-
-
-      }
-      break;
+  window.addEventListener('DOMContentLoaded', (event) => {
+    let players = <%- JSON.stringify(players) %>;
+    for (let i = 0; i < players.length && i < 8; i++) {
+        let teamElement = document.getElementById('team' + (i + 1));
+        if (teamElement) {
+            teamElement.innerHTML = players[i].team_name;
+        }
     }
-
-  }
-  </script>
+});
+</script>

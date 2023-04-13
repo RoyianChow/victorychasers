@@ -10,10 +10,16 @@ const TournamentSchema = new Schema({
   end_date: String,
   max_players: Number,
   description: String,
-  players: [{ type: Schema.Types.ObjectId, ref: 'Players' }] // Reference the Players schema
-}, {
+ 
+
+  players: [{
+    type: Schema.Types.ObjectId,
+    ref: "PlayerSchema"
+ }]}, {
   timestamps: true,
   collection: 'tournaments'
 });
 
-export default mongoose.model('Tournaments', TournamentSchema);
+
+export default mongoose.model('Tournaments', TournamentSchema); 
+

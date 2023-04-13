@@ -1,5 +1,6 @@
 
 import tournamentsModel from '../models/tournaments.js';
+import playerModel from '../models/player-schema.js';
 
 import { UserDisplayName } from "../utils/index.js";
 
@@ -127,53 +128,84 @@ export function displayViewTournament(req, res, next) {
         } else {
             // Check if the tournament exists
             if (tournament) {
+                playerModel.find({tournament:id},(err, players) => {
+                    if (err) {
+                        console.error(err);
+                        res.end(err);
+                    }
+                    
                 // Render the view.ejs template with the tournament information
-                res.render('index', { title: 'Tournament View', page: 'tournaments/view', tournament,displayName: UserDisplayName(req) });
+                res.render('index', { title: 'Tournament View', page: 'tournaments/view',players,tournament ,id:id,displayName: UserDisplayName(req) });
+            });
             } else {
                 // Send a 404 status and an error message if the tournament is not found
                 res.status(404).send('Tournament not found');
             }
         }
-    });
+    })
+        
+   
+
 }
 
-// Display the Join page
-export function displayJoinPage(req, res, next) {
-    let id = req.params.id;
+
   
+export function processViewTournament(req, res, next) {
+    let id = req.params.id;
+
+    // Find the tournament in the tournaments collection by its ID
     tournamentsModel.findById(id, (err, tournament) => {
-      if (err) {
-        console.error(err);
-        res.end(err);
-      } else {
-        res.render('index', { title: 'Join Tournament', page: 'tournaments/player', tournament,displayName: UserDisplayName(req) });
-      }
-    });
-  }
-  
-  // Process the Join page
-  export function processJoinPage(req, res, next) {
-    let id = req.params.id;
-    let playerName = req.body.playerName;
-  
-    tournamentsModel.findById(id, (err, tournament) => {//
-      if (err) {
-        console.error(err);
-        res.end(err);
-      } else {
-        // Add the player to the tournament's players array
-        tournament.players.push(playerName);
-  
-        // Save the updated tournament
-        tournament.save((err) => {
-          if (err) {
+       
+        if (err) {
             console.error(err);
             res.end(err);
-          } else {
-            res.redirect('/tournaments/view/' + id);
-          }
-        });
-      }
+        } else {
+            // Check if the tournament exists
+            if (tournament) {
+                playerModel.find({tournamentId:id},(err, players) => {
+                    if (err) {
+                        console.error(err);
+                        res.end(err);
+                    }
+                    res.render('index', { title: 'Tournament List', page: 'tournaments/list',players,tournament ,displayName: UserDisplayName(req) });
+                });
+            } else {
+                // Send a 404 status and an error message if the tournament is not found
+                res.status(404).send('Tournament not found');
+            }
+        }
+
     });
-  }
-  
+   
+}
+export function displayPlayerAddPage(req, res, next) {
+    let id = req.params.id;
+    console.log("TournamentId" + id)
+    // render the add page with a default empty player object
+    res.render('index', { title: 'Tournament Add Team', page: 'tournaments/player', id:id ,player: {},displayName: UserDisplayName(req) });
+}
+// POST process the player Details page and create a new tournament - CREATE
+export function processPlayerAddPage(req, res, next) {
+    let id = req.params.id;
+    tournamentsModel.findById(id, (err, tournament) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        } else {
+            let newPlayer = new playerModel({
+                team_name: req.body.team_name,
+                tournament: tournament._id
+            });
+
+            newPlayer.save((err) => {
+                if (err) {
+                    console.error(err);
+                    res.end(err);
+                } else {
+                    // redirect to the tournament list page
+                    res.redirect('/tournaments/list');
+                }
+            });
+        }
+    });
+}

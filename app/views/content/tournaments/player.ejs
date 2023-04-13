@@ -6,16 +6,21 @@
   <title>Join Tournament</title>
 </head>
 <body>
-  <h1>Join Tournament: <%= tournament.name %></h1>
+  
 
-  <form action="/tournaments/join/<%= tournament._id %>" method="POST">
+  <form class="form" method="POST" >
+   
     <div class="form-group">
-      <label for="playerName">Player Name</label>
-      <input type="text" class="form-control" id="playerName" name="playerName" placeholder="Enter your name" required>
+      <label for="team_nameTextField">Team Name</label>
+      <input type="text" class="form-control" name="team_name" id= "team_nameTextField"  required>
     </div>
+  
+  
+    <input type="hidden" name="tournamentId" value="<%= id %>" />
+   
 
     <button type="submit" class="btn btn-primary">Submit</button>
-    <a href="/tournaments/view/<%= tournament._id %>" class="btn btn-warning">Cancel</a>
+    <a href="/tournaments/list %>" class="btn btn-warning">Cancel</a>
   </form>
 
 </body>
