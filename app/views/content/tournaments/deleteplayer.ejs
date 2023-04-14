@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Tournament</title>
+</head>
+<body>
+  
+
+    <form action="/tournaments/deleteplayer/<%= id %>" method="post">
+   
+    <label for="teams">Choose a team:</label>
+    <% let teamIndex = 0; %>
+
+    <select name="teams" id="teams">
+      <option id="<%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %>" value="<%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %>"> <%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %></option>
+      <%  teamIndex++ %>
+
+      <option id="<%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %>" value="<%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %>"> <%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %></option>
+      <%  teamIndex++ %>
+
+      <option id="<%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %>" value="<%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %>"> <%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %></option>
+      <%  teamIndex++ %>
+
+      <option id="<%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %>" value="<%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %>"> <%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %></option>
+      <%  teamIndex++ %>
+
+      <option id="<%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %>" value="<%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %>"> <%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %></option>
+      <%  teamIndex++ %>
+
+      <option id="<%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %>" value="<%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %>"><%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %> </option>
+      <%  teamIndex++ %>
+
+      <option id="<%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %>" value="<%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %>"> <%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %></option>
+      <%  teamIndex++ %>
+
+      <option id="<%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %>" value="<%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %>"> <%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %></option>
+    </select>
+    
+    
+  
+    <input type="hidden" name="tournamentId" value="<%= id %>" />
+   
+    <button type="submit"  class="btn btn-danger" class="fas fa-trash-alt">Delete</button>
+         
+    <a href="/tournaments/view/<%= tournament._id %>" class="btn btn-warning">Cancel</a>
+    <a href="/tournaments/view/<%= tournament._id %>">Back to tournament</a>
+  </form>
+
+</body>
+</html>

@@ -143,9 +143,6 @@ export function displayViewTournament(req, res, next) {
             }
         }
     })
-        
-   
-
 }
 
 
@@ -192,7 +189,7 @@ export function processPlayerAddPage(req, res, next) {
             console.error(err);
             res.end(err);
         } else {
-            let newPlayer = new playerModel({
+            let newPlayer =  playerModel({
                 team_name: req.body.team_name,
                 tournament: tournament._id
             });
@@ -208,4 +205,179 @@ export function processPlayerAddPage(req, res, next) {
             });
         }
     });
+}
+
+
+export function processWinPage(req,res,next){
+    const {team_id} = req.params
+}
+
+// POST - process the information passed from the details form and update the document
+export function processPlayerEditPage(req, res, next) {
+    let id = req.params.id;
+    let team = req.body.teams;
+    let team_name1= req.body.new_name;
+
+    tournamentsModel.findById(id, (err, tournament) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        } else {
+            // Prepare the update object
+            
+
+            // Update all players with the given team_name
+            playerModel.updateOne({ team_name: team }, { team_name: team_name1 }, (err) => {
+                if (err) {
+                    console.error(err);
+                    res.end(err);
+                } else {
+                    // Redirect to the tournament list page
+                    res.redirect('/tournaments/view/' + id);
+                }
+            });
+        }
+    });
+}
+
+// GET the tournament Details page in order to edit an existing tournament
+
+export function displayPlayerEditPage(req, res, next) {
+    let id = req.params.id;
+
+    // Find the tournament in the tournaments collection by its ID
+    tournamentsModel.findById(id, (err, tournament) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        } else {
+            // Check if the tournament exists
+            if (tournament) {
+                playerModel.find({tournament:id},(err, players) => {
+                    if (err) {
+                        console.error(err);
+                        res.end(err);
+                    }
+                
+                    
+                // Render the view.ejs template with the tournament information
+                res.render('index', { title: 'Tournament Edit Player', page: 'tournaments/editPlayer',players,tournament ,id:id,displayName: UserDisplayName(req) });
+            });
+            } else {
+                // Send a 404 status and an error message if the tournament is not found
+                res.status(404).send('Tournament not found');
+            }
+        }
+});
+}export function displayWinOrLoss(req, res, next) {
+    let id = req.params.id;
+
+    // Find the tournament in the tournaments collection by its ID
+    tournamentsModel.findById(id, (err, tournament) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        } else {
+            // Check if the tournament exists
+            if (tournament) {
+                playerModel.find({tournament:id},(err, players) => {
+                    if (err) {
+                        console.error(err);
+                        res.end(err);
+                    }
+                
+                    
+                // Render the view.ejs template with the tournament information
+                res.render('index', { title: 'Tournament win loss', page: 'tournaments/winOrLoss',players,tournament ,id:id,displayName: UserDisplayName(req) });
+            });
+            } else {
+                // Send a 404 status and an error message if the tournament is not found
+                res.status(404).send('Tournament not found');
+            }
+        }
+    });
+}
+
+export function processPlayerWinLossPage(req, res, next) {
+    let id = req.params.id;
+    let team = req.body.teams;
+    let val= req.body.winOrLoss;
+
+    tournamentsModel.findById(id, (err, tournament) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        } else {
+            // Prepare the update object
+            
+
+            // Update all players with the given team_name
+            playerModel.updateOne({ team_name: team }, { win_loss: val }, (err) => {
+                if (err) {
+                    console.error(err);
+                    res.end(err);
+                } else {
+                    // Redirect to the tournament list page
+                    res.redirect('/tournaments/view/' + id);
+                }
+            });
+        }
+    });
+}// POST - process the information passed from the details form and update the document
+export function processPlayerDeletePage(req, res, next) {
+    let id = req.params.id;
+    let team = req.body.teams;
+    let team_name1= req.body.new_name;
+
+    tournamentsModel.findById(id, (err, tournament) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        } else {
+            // Prepare the update object
+            
+
+            // delete  player with the given team_name
+            playerModel.deleteOne({ team_name: team }, { team_name: team_name1 }, (err) => {
+                if (err) {
+                    console.error(err);
+                    res.end(err);
+                } else {
+                    // Redirect to the tournament list page
+                    res.redirect('/tournaments/deleteplayer/' + id);
+                }
+            });
+        }
+    });
+}
+
+// GET the tournament Details page in order to edit an existing tournament
+
+export function displayPlayerDeletePage(req, res, next) {
+    let id = req.params.id;
+
+    // Find the tournament in the tournaments collection by its ID
+    tournamentsModel.findById(id, (err, tournament) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        } else {
+            // Check if the tournament exists
+            if (tournament) {
+                playerModel.find({tournament:id},(err, players) => {
+                    if (err) {
+                        console.error(err);
+                        res.end(err);
+                    }
+                
+                    
+                // Render the view.ejs template with the tournament information
+                res.render('index', { title: 'Tournament delete Player', page: 'tournaments/deleteplayer',players,tournament ,id:id,displayName: UserDisplayName(req) });
+            });
+            } else {
+                // Send a 404 status and an error message if the tournament is not found
+                res.status(404).send('Tournament not found');
+            }
+        }
+});
 }

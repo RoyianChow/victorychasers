@@ -8,7 +8,6 @@ const TournamentSchema = new Schema({
   organizer: String,
   start_date: String,
   end_date: String,
-  max_players: Number,
   description: String,
  
 

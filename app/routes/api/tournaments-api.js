@@ -11,10 +11,13 @@ router.get('/:id', Get);
 router.post('/add', Add);
 router.put('/edit/:id', Edit);
 router.delete('/delete/:id', Delete);
+//router.delete('/victory/:id', Victory);
 
 router.get('/view/:id', GetPlayerList);
 router.get('/:id', playerGet);
 router.post('/player/:id', playerAdd);
+//router.put('/editPlayer/:id', PlayerEdit);
+
 //router.put('/player', playerEdit);
 //router.delete('/delete/:id', playerDelete);
 

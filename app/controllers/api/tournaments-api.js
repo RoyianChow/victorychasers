@@ -108,21 +108,21 @@ export function Edit(req, res, next){
     })
 }
 //U pdate
-export function playerEdit(req, res, next){
+export function PlayerEdit(req, res, next){
     let id = req.params.id;
 
-    let updatedPlayer = new playersModel({
+    let updatedTournament = new tournamentsModel({
         "_id": id,
         ...req.body
     });
 
-    playersModel.updateOne({ _id: id }, updatedPlayer, (err) => {
+    tournamentsModel.updateOne({ _id: id }, updatedTournament, (err) => {
         if (err) {
             console.error(err);
             res.end(err);
         }
 
-        res.json({ success: true, msg: 'Success', updatedPlayer });
+        res.json({ success: true, msg: 'Success', updatedTournament });
     })
 }
 
@@ -131,7 +131,7 @@ export function playerEdit(req, res, next){
 export function Delete(req, res, next){
     let id = req.params.id
 
-    tournamentsModel.remove({_id: id}, function(error){
+    playersModel.remove({_id: id}, function(error){
         if(error){
             console.error(error);
             res.end(error);
@@ -140,6 +140,7 @@ export function Delete(req, res, next){
         res.json({success: true, msg: 'Delete Successfull'});
     })
 }
+
 
 //D elete
 export function playerDelete(req, res, next){

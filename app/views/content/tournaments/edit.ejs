@@ -55,16 +55,7 @@
                     value="<%= tournament.end_date %>"
                     required>
                 </div>
-                <div class="form-group">
-                    <label for="max_playersTextField">Max Players</label>
-                    <input type="text" class="form-control"
-                           id="max_playersTextField"
-                           placeholder="Enter max players"
-                           name="max_players" 
-                           value="<%= tournament.max_players %>"
-                           required>
-                    <div class="invalid-feedback">Please enter a valid number for Max Players.</div>
-                  </div>
+         
                   
                   <script>
                     // add event listener to the form submit button
@@ -78,6 +69,7 @@
                         maxPlayersInput.classList.remove('is-invalid');
                       }
                     });
+                    
                   </script>
 
 

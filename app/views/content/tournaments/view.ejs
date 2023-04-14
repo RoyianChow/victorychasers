@@ -74,24 +74,24 @@
       <p><strong>Organizer:</strong> <%= tournament.organizer %></p>
       <p><strong>Start Date:</strong> <%= tournament.start_date %></p>
       <p><strong>End Date:</strong> <%= tournament.end_date %></p>
-      <p><strong>Max Players:</strong> <%= tournament.max_players %></p>
       <p><strong>Description:</strong> <%= tournament.description %></p>
       <a href="/tournaments/list">Back to tournament list</a>
       <!-- Add the Join button -->
       <a href="/tournaments/player/<%= id %>" class="btn btn-primary mb-3" role="button" id="btnJoin">
-        <i class="fas fa-plus-circle"></i> Join!</a>
-
-      
-
+        <i class="fas fa-user-plus"></i> Join!</a>
+        <a href="/tournaments/editPlayer/<%= id %>" class="btn btn-primary mb-3" role="button" id="btnJoin1">
+          <i class="fas fa-edit"></i> Edit!</a>
+          <a href="/tournaments/deleteplayer/<%= tournament._id %>" class="btn btn-danger">
+            <i class="fas fa-trash-alt"></i> Delete</a>  
+            <br>      
+            <a href="/tournaments/winOrLoss/<%= id %>" class="btn btn-dark" >
+              <i class="fas fa-plus-circle"></i>  win or loss        <i class="fas fa-undo"></i></a>    
           <!-- Repeatable Template Row -->
           
     
 <br>
 <br>
-      <a class="btn btn-success">
-        <i class="fas fa-user-plus"></i> Add win or loss
-      </a>
-     
+ 
 
    
     </div>
@@ -108,39 +108,39 @@
     <li class="spacer">&nbsp;</li>
       
  
-    <li class="game game-top winner"> <%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %><span id="t<%= teamIndex %>">00</span>
+    <li class="game game-top winner"> <%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %><span id="t<%= teamIndex %>"><%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].win_loss : 'Empty' %></span>
       <%  teamIndex++ %>
 
     <li class="game game-spacer">&nbsp;</li>
     <li class="game game-spacer">A &nbsp; </li>
-    <li class="game game-bottom winner" id="team<%= teamIndex %>"> <%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %><span id="t<%= teamIndex %>">00</span>
+    <li class="game game-bottom winner" id="team<%= teamIndex %>"> <%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %><span id="t<%= teamIndex %>"><%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].win_loss : 'Empty' %></span>
       <%  teamIndex++ %>
 
     <li class="spacer">&nbsp;</li>
-    <li class="game game-top winner" id="team<%= teamIndex %>">  <%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %><span id="t<%= teamIndex %>">00</span>
+    <li class="game game-top winner" id="team<%= teamIndex %>">  <%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %><span id="t<%= teamIndex %>"><%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].win_loss : 'Empty' %></span>
       <%  teamIndex++ %>
 
     <li class="game game-spacer">&nbsp;</li>
     <li class="game game-spacer">B &nbsp;</li>
-    <li class="game game-bottom winner" id="team<%= teamIndex %>">  <%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %><span id="t<%= teamIndex %>">00</span>
+    <li class="game game-bottom winner" id="team<%= teamIndex %>">  <%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %><span id="t<%= teamIndex %>"><%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].win_loss : 'Empty' %></span>
       <%  teamIndex++ %>
 
     <li class="spacer">&nbsp;</li>
-    <li class="game game-top winner" id="team<%= teamIndex %>"> <%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %><span id="t<%= teamIndex %>">00</span>
+    <li class="game game-top winner" id="team<%= teamIndex %>"> <%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %><span id="t<%= teamIndex %>"><%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].win_loss : 'Empty' %></span>
       <%  teamIndex++ %>
 
     <li class="game game-spacer">&nbsp;</li>
     <li class="game game-spacer">C &nbsp;</li>
-    <li class="game game-bottom winner" id="team<%= teamIndex %>"> <%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %><span id="t<%= teamIndex %>">00</span>
+    <li class="game game-bottom winner" id="team<%= teamIndex %>"> <%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %><span id="t<%= teamIndex %>"><%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].win_loss : 'Empty' %></span>
       <%  teamIndex++ %>
 
     <li class="spacer">&nbsp;</li>
-    <li class="game game-top winner" id="team<%= teamIndex %>"> <%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %><span id="t<%= teamIndex %>">00</span>
+    <li class="game game-top winner" id="team<%= teamIndex %>"> <%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %><span id="t<%= teamIndex %>"><%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].win_loss : 'Empty' %></span>
       <%  teamIndex++ %>
 
     <li class="game game-spacer">&nbsp;</li>
     <li class="game game-spacer">D &nbsp;</li>
-    <li class="game game-bottom winner" id="team<%= teamIndex %>"> <%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %><span id="t<%= teamIndex %>">00</span>
+    <li class="game game-bottom winner" id="team<%= teamIndex %>"> <%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].team_name : 'Empty' %><span id="t<%= teamIndex %>"><%= Array.isArray(players) && players[teamIndex] ? players[teamIndex].win_loss : 'Empty' %></span>
 
     <li class="spacer">&nbsp;</li>
   </ul>
@@ -187,12 +187,6 @@
 </body>
 </html>
 <script>
- window.addEventListener('DOMContentLoaded', (event) => {
-  for (let i = 0; i < players.length && i < 8; i++) {
-    let teamElement = document.getElementById('team' + (i + 1));
-    if (teamElement) {
-      teamElement.innerHTML = players[i] ? players[i].team_name : 'Empty';
-    }
-  }
-});
+
+
 </script>

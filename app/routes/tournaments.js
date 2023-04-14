@@ -1,7 +1,7 @@
 
 import { Router } from "express";
 
-import { displayAddPage, displayTournamentList, displayViewTournament,processPlayerAddPage,displayPlayerAddPage, processAddPage, processDelete, processEditPage,displayEditPage,  } from "../controllers/tournaments.js";
+import { displayAddPage, displayTournamentList, displayViewTournament,processPlayerAddPage,displayPlayerAddPage,displayWinOrLoss,processPlayerEditPage,displayPlayerEditPage,processAddPage, processDelete, processEditPage,displayEditPage, displayPlayerDeletePage, processPlayerDeletePage, processPlayerWinLossPage  } from "../controllers/tournaments.js";
 
 const router = Router();
 
@@ -26,6 +26,13 @@ router.get('/tournaments/view/:id', displayViewTournament);
 //router.post('/tournaments/view/:id', processViewTournament);
 router.get('/tournaments/player/:id', displayPlayerAddPage);
 router.post('/tournaments/player/:id', processPlayerAddPage);
+router.get('/tournaments/editPlayer/:id', displayPlayerEditPage);
+router.post('/tournaments/editPlayer/:id', processPlayerEditPage);
+router.get('/tournaments/winOrLoss/:id', displayWinOrLoss);
+router.post('/tournaments/winOrLoss/:id', processPlayerWinLossPage);
+
+router.get('/tournaments/deleteplayer/:id', displayPlayerDeletePage);
+router.post('/tournaments/deleteplayer/:id', processPlayerDeletePage);
 
 
 

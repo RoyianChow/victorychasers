@@ -12,10 +12,9 @@
                 <tr class="d-flex">
                     <th class="text-center col-2">Title</th>
                     <th class="text-center col-2">Game</th>
-                    <th class="text-center col-1">Organizer</th>
+                    <th class="text-center col-2">Organizer</th>
                     <th class="col-1">Start Date</th>
                     <th class="col-1">End Date</th>
-                    <th class="text-center col-1">Max Players</th>
                     <th class="text-center col-2">Description</th>
                     <th class="text-center col-1">Edit</th>
                     <th class="text-center col-1">View</th>
@@ -30,7 +29,7 @@
                     <td class="text-center col-2">
                         <%= tournaments[count].game %>
                     </td>
-                    <td class="text-center col-1">
+                    <td class="text-center col-2">
                         <%= tournaments[count].organizer %>
                     </td>
                     <td class="col-1">
@@ -39,9 +38,7 @@
                     <td class="col-1">
                         <%= tournaments[count].end_date %>
                     </td>
-                    <td class="text-center col-1">
-                        <%= tournaments[count].max_players %>
-                    </td>
+                  
                     <td class="text-center col-2">
                         <%= tournaments[count].description %>
                     </td>
