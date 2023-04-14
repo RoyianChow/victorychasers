@@ -208,9 +208,6 @@ export function processPlayerAddPage(req, res, next) {
 }
 
 
-export function processWinPage(req,res,next){
-    const {team_id} = req.params
-}
 
 // POST - process the information passed from the details form and update the document
 export function processPlayerEditPage(req, res, next) {
@@ -327,7 +324,6 @@ export function processPlayerWinLossPage(req, res, next) {
 export function processPlayerDeletePage(req, res, next) {
     let id = req.params.id;
     let team = req.body.teams;
-    let team_name1= req.body.new_name;
 
     tournamentsModel.findById(id, (err, tournament) => {
         if (err) {
@@ -338,7 +334,7 @@ export function processPlayerDeletePage(req, res, next) {
             
 
             // delete  player with the given team_name
-            playerModel.deleteOne({ team_name: team }, { team_name: team_name1 }, (err) => {
+            playerModel.deleteOne({ team_name: team },  (err) => {
                 if (err) {
                     console.error(err);
                     res.end(err);
